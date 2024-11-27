@@ -31,39 +31,51 @@ addBtn.addEventListener("click", (e) => {
 
     if (priority == 1) {
       listCards.innerHTML += `<div class="col">
-              <div class="card text-bg-secondary mb-3" style="max-width: 18rem">
-                <div class="card-header">Low</div>
-                <div class="card-body">
-                  <h5 class="card-title">${toDo}</h5>
-                </div>
-              </div>
-            </div> `;
+  <div class="card text-bg-secondary mb-3" style="max-width: 18rem">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <span>Low</span>
+      <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">${toDo}</h5>
+    </div>
+  </div>
+</div>
+`;
 
       clearInputs();
     }
 
     if (priority == 2) {
       listCards.innerHTML += `<div class="col">
-              <div class="card text-bg-light mb-3" style="max-width: 18rem">
-                <div class="card-header">Medium</div>
-                <div class="card-body">
-                  <h5 class="card-title">${toDo}</h5>
-                </div>
-              </div>
-            </div>`;
+  <div class="card text-bg-light mb-3" style="max-width: 18rem">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <span>Medium</span>
+      <button type="button" class="btn-close" aria-label="Close"></button>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">${toDo}</h5>
+    </div>
+  </div>
+</div>
+`;
 
       clearInputs();
     }
 
     if (priority == 3) {
       listCards.innerHTML += `<div class="col">
-              <div class="card text-bg-danger mb-3" style="max-width: 18rem">
-                <div class="card-header">High priority</div>
-                <div class="card-body">
-                  <h5 class="card-title">${toDo}</h5>
-                </div>
-              </div>
-            </div> `;
+  <div class="card text-bg-danger mb-3" style="max-width: 18rem">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <span>High Priority</span>
+      <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">${toDo}</h5>
+    </div>
+  </div>
+</div>
+ `;
 
       clearInputs();
     }
@@ -74,3 +86,14 @@ function clearInputs() {
   textTodo.value = "";
   prioritySelect.selectedIndex = 0;
 }
+
+let closeBtns = document.querySelectorAll(".btn-close");
+
+listCards.addEventListener("click", (e) => {
+  if (e.target.classList.contains("btn-close")) {
+    const divide = e.target.closest(".col");
+    if (divide) {
+      divide.remove();
+    }
+  }
+});
